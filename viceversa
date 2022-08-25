@@ -1,0 +1,21 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+    char str[20];
+    int i;
+    printf("enter a string:  ");
+    gets(str);
+    for(i=0;str[i]!=0;i++)
+    {
+        if(i<=97)
+        {
+            str[i]=str[i]-32;
+        }
+        if(i>=97)
+        {
+            str[i]=str[i]+32;
+        }
+    }
+   puts(str);
+    return 0;
+}
