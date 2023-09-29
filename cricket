@@ -17,12 +17,13 @@ Instructions:
 9.the person with maximum score wins..
 """)
 print("welcome to Cricket")
+num=(int(input("choose number of overs from a range of 1-5 : ")))
+wickets=num
+balls=num*6
 mlist=[1,2]
-nlist=[1,2]
 systemopt=[1,2]
 sopt=random.choice(systemopt)
 random_tossing=random.choice(mlist)
-random_borbow=random.choice(nlist)
 mine=0
 cine=0
 my_cho=(input("choose heads or tails:")).lower()
@@ -36,7 +37,7 @@ if(random_tossing==1 and my_cho=="heads"):
     if(choice!="batting" and choice!="bowling"):
         print("invalid choice")
         sys.exit()
-    
+
 elif(random_tossing==2 and my_cho=="tails"):
     print("\nyou won the toss")
     choice=(input("batting or bowling:")).lower()
@@ -58,10 +59,19 @@ myscore_1=0
 wickets_f=0
 balls_f=0
 cscore_1=0
-while wickets_f!=2 and balls_f!=12:
+while wickets_f!=wickets and balls_f!=balls:
     if(balls_f==6):
         print("----------End of First over--------")
         print("----------second over starts--------")
+    if(balls_f==12):
+        print("----------End of Second over--------")
+        print("----------Third over starts--------")
+    if(balls_f==18):
+        print("----------End of Third over--------")
+        print("----------Fourth over starts--------")
+    if(balls_f==24):
+        print("----------End of Fourth over--------")
+        print("----------Fifth over starts--------")
     mychoicees=(input("choose a number from 1 to 6 :"))
     mychoicee=int(mychoicees)
     cchoice=random.choice(listofr)
@@ -75,17 +85,23 @@ while wickets_f!=2 and balls_f!=12:
             print("-----wicket out----")
             if(mine=="batting" or cine=="bowling"):
                 wickets_f+=1
-                cscore_1+=cchoice
             elif(mine=="bowling" or cine=="batting"):
                 wickets_f+=1
-                myscore_1+=mychoicee
         else:
             if(mine=="batting" or cine=="bowling"):
                 myscore_1+=mychoicee
             elif(mine=="bowling" or cine=="batting"):
                 cscore_1+=cchoice
     balls_f+=1
-print("your score :",myscore_1,"/","computer score:",cscore_1) 
+yard=0
+if(mine=="batting"):
+    print("your score:",myscore_1)
+    print("Computer's Target is ",myscore_1+1)
+    yard=myscore_1
+elif(cine=="batting"):
+    print("Computer's Score :",cscore_1)
+    print("your Target is ",myscore_1+1)
+    yard=cscore_1
 print("end of the first innings")
 print("....Start of second innings...")
 #---------- Second Innings Begins ----------#
@@ -95,10 +111,26 @@ myscore_2=0
 wickets_s=0
 balls_s=0
 cscore_2=0
-while wickets_s!=2 and balls_s!=12:
+while wickets_s!=wickets and balls_s!=balls:
+    if(myscore_1 > yard):
+        print("Congratulations..You Won..!")
+        break
+    if(cscore_1>yard):
+        print("Computer won..!Better luck next time")
+        break
+    
     if(balls_s==6):
         print("----------End of First over--------")
         print("----------second over starts--------")
+    if(balls_s==12):
+        print("----------End of Second over--------")
+        print("----------Third over starts--------")
+    if(balls_s==18):
+        print("----------End of Third over--------")
+        print("----------Fourth over starts--------")
+    if(balls_s==24):
+        print("----------End of Fourth over--------")
+        print("----------Fifth over starts--------")
     mychoicees=(input("choose a number from 1 to 6 :"))
     mychoice=int(mychoicees)
     cchoice=random.choice(listofr)
@@ -111,26 +143,128 @@ while wickets_s!=2 and balls_s!=12:
             print("----wicket out----")
             if(mine=="batting" or cine=="bowling"):
                 wickets_s+=1
-                cscore_2+=cchoice
-                
+
             elif(mine=="bowling" or cine=="batting"):
                 wickets_s+=1
-                myscore_2+=mychoice
-                
+
         else:
             if(mine=="batting" or cine=="bowling"):
                 myscore_2+=mychoice
             elif(mine=="bowling" or cine=="batting"):
                 cscore_2+=cchoice
     balls_s+=1
-print("your score :",myscore_2,"/","computer score:",cscore_2)
+    if(mine=="batting"):
+        print("your score:",myscore_2)
+    elif(cine=="batting"):
+        print("Computer's Score :",cscore_2)
 print("End of second innings")
 myfinal=myscore_1+myscore_2
 comfinal=cscore_1+cscore_2
-print("your final score:",myfinal,"/","computer final score",comfinal)
+print("your Final Score:",myfinal,"/","Computer's Final Score",comfinal)
 if(myfinal>comfinal):
     print("Congratulations u won the match")
 elif(myfinal==comfinal):
     print("Noone wins..!It's a tie")
+    print("Time for Supermatch")
+    ilist=[1,2]
+    jlist=[1,2]
+    mmine=0
+    ccine=0
+    gscore=0
+    sscore=0
+    random_to=random.choice(ilist)
+    random_for=random.choice(jlist)
+    mycho=input("choose heads or tails :").lower
+    if(mycho=="heads"and random_to==1):
+        print("\nyou won the toss")
+        choicee=(input("batting or bowling")).lower
+        mmine=choicee
+        if(choicee!="batting" and choicee!="bowling"):
+            print("invalid choice")
+            sys.exit()
+    elif(mycho=="tails"and random_to==2):
+        print("\nyou won the toss")
+        choicee=(input("batting or bowling")).lower
+        mmine=choicee
+        if(choicee!="batting" and choicee!="bowling"):
+            print("invalid choice")
+            sys.exit()
+    else:
+        print("\nyou lost the toss")
+        if(random_for==1):
+            print("computer chose batting")
+            ccine="batting"
+        else:
+            print("computer chose bowling")
+            ccine="bowling"
+    balls=0
+    listofp=[1,2,3,4,5,6]
+    print("Super over first innings")
+    while balls!=6:
+        gcho=(input("select a number from 1 to 6 :"))
+        gchoice=int(gcho)
+        choiceofc=random.choice(listofp)
+        if(gchoice<1 or gchoice>6):
+            print("incorrect selecction")
+            print("choose between 1 to 6")
+        else:
+            print("your choice",gchoice)
+            print("Computer's choice",choiceofc)
+            if(gchoice!=choiceofc):
+                if(mmine=="batting"or ccine=="bowling"):
+                    gscore+=gchoice
+                elif(mmine=="bowling"or ccine=="batting"):
+                    sscore+=choiceofc
+            elif(gchoice==choiceofc):
+                print("Wicket out")
+                break
+                    
+        balls+=1
+        if(mmine=="batting"):
+            print("your score:",gscore)
+            sscore=0
+        if(ccine=="batting"):
+            print("Computer's score:",sscore)
+            gscore=0
+    mmine,ccine=ccine,mmine
+    gscore2=0
+    sscore2=0
+    balls2=0
+    listofq=[1,2,3,4,5,6]
+    print("Super over second innings")
+    while balls2!=6:
+        gcho2=(input("select a number from 1 to 6 :"))
+        gchoice2=int(gcho2)
+        choiceofc2=random.choice(listofq)
+        if(gchoice2<1 or gchoice2>6):
+            print("incorrect selecction")
+            print("choose between 1 to 6")
+        else:
+            print("your choice",gchoice2)
+            print("Computer's choice",choiceofc2)
+            if(gchoice2!=choiceofc2):
+                if(mmine=="batting"or ccine=="bowling"):
+                    gscore2+=gchoice2
+                elif(mmine=="bowling"or ccine=="batting"):
+                    sscore2+=choiceofc2
+            elif(gchoice2==choiceofc2):
+                print("Wicket out")
+                break
+                    
+        balls2+=1
+        if(mmine=="batting"):
+            print("your score:",gscore2)
+            sscore2=0
+        if(ccine=="batting"):
+            print("Computer's score:",sscore2)
+            gscore2=0 
+    gfinall=gscore+gscore2
+    cfinal=sscore+sscore2
+    if(gfinall>cfinal):
+        print("Congratulations..You won...!")
+    elif(gfinall<cfinal):
+        print("Computer Won..Better luck next time...!")
+    else:
+        print("No one wins")
 else:
-    print("Better luck next time..!computer won the match")
+    print("computer won the match..!Better luck next time")
