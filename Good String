@@ -1,0 +1,33 @@
+s1 = input()
+s2 = input()
+a1 = [ord(i) for i in s1]
+re = int(a1[0])
+a1.sort()
+a2 = [ord(i) for i in s2]
+final = list()
+res = list()
+total = 0
+for i in a2:
+    for j in a1:
+        res.append(abs(i-j))
+    bus = set(res)
+    if len(bus) == len(res):
+        final.append(min(res))
+    else:
+        count=0
+        for s in res:
+            if s == min(res):
+                count += 1
+        if count == 1:
+            final.append(min(res))
+        else:
+            g1 = abs(abs(i+min(res))-re)
+            g2 = abs(abs(i-min(res))-re)
+            if g1 >= g2:
+                final.append(g2)
+            else:
+                final.append(g1)
+    res.clear()
+for i in final:
+    total += i
+print(total)
