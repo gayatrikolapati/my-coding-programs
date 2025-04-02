@@ -17,7 +17,7 @@ Instructions:
 9.the person with maximum score wins..
 """)
 print("welcome to Cricket")
-num=(int(input("choose number of overs from a range of 1-5")))
+num=(int(input("choose number of overs from a range of 1-5 : ")))
 wickets=num
 balls=num*6
 mlist=[1,2]
